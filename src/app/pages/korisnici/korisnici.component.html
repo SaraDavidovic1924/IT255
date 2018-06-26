@@ -1,0 +1,33 @@
+<div class="container">
+  <img src="../assets/krug.jpg">
+  <h2>Pregled korisnika</h2>
+  <p>Admin sme da obrise korisnika!!!</p>
+  <h2 class="text-dark text-left">Dijabet dnevnik</h2>
+</div>
+<div class=" my-5 p-1  table-responsive">
+  <table class=" table table-active table-bordered">
+    <thead>
+      <tr class="text-center" style="border: 1px solid #428bca">
+
+        <th class="text-dark">Ime</th>
+        <th class="text-dark">Prezime</th>
+        <th class="text-dark">Korisnicko ime</th>
+        <!-- <th class="text-dark">Lozinka</th>
+          <th class="text-dark">Token</th> -->
+        <th class="text-dark">Obrisi?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-info" *ngFor="let korisnik of korisnici" style="border: 1px solid #428bca">
+        <td class="text-info">{{korisnik.firstname}}</td>
+        <td class="text-info">{{korisnik.lastname}}</td>
+        <td class="text-info">{{korisnik.username}}</td>
+        <!-- <td class="text-info" >{{korisnik.password}}</td>
+          <td class="text-info">{{korisnik.token}}</td> -->
+        <td class="text-info">
+          <button class="btn btn-outline-danger" (click)="obrisi_korinsika(korisnik.id)">Obrisi</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

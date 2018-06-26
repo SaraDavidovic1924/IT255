@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <div>
+    <img src="../assets/krug.jpg">
+
+    <h2>Dnevnik pregleda</h2>
+    <p>Vasa tabela sa prikazima za glikemiju i insulin!</p>
+    <h2 class="text-dark text-center">Dijabet dnevnik</h2>
+
+    <div class=" my-5 p-1  table-responsive">
+      <table class=" table table-active table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center text-dark" colspan="5" style="border: 1px solid #428bca">Pregled</th>
+
+          </tr>
+          <tr class="plavo">
+            <th class="text-info">Datum i vreme</th>
+            <th class="text-info">Vrednost</th>
+            <th class="text-info">Tip insulina</th>
+            <th class="text-info">Vrsta unosa</th>
+            <th class="text-info">Obrisi?</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="belo" *ngFor="let zapis of dnevnik">
+            <td class="text-dark" style="border: 1px solid #428bca">{{zapis.DATUM_I_VREME_IM}}</td>
+            <td class="text-dark" style="border: 1px solid #428bca">{{zapis.VREDNOST}}</td>
+            <td class="text-dark" style="border: 1px solid #428bca">{{zapis.TIP_INSULINA}}</td>
+            <td class="text-dark" style="border: 1px solid #428bca">{{zapis.TIP_UNOSA}}</td>
+            <td class="text-dark" style="border: 1px solid #428bca">
+              <button class="btn btn-outline-danger" (click)="obirsi_unos(zapis.ISTORIJA_MERENJA_ID)">Obrisi unos</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,15 @@
+.text-info {
+  border: 1px solid #428bca;
+}
+
+img {
+  border-radius: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+.plavo {
+  font-family: "Times New Roman";
+}
+
