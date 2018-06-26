@@ -191,12 +191,12 @@ function getDnevnik()
 
     if (checkIfLoggedIn()) {
 
-        $stmt = $conn->prepare('SELECT  
-                                        istorija_merenja.ISTORIJA_MERENJA_ID,                                       
-                                        istorija_merenja.DATUM_I_VREME_IM, 
-                                        istorija_merenja.VREDNOST, 
-                                        istorija_merenja.TIP_INSULINA, 
-                                        istorija_merenja.TIP_UNOSA 
+        $stmt = $conn->prepare('SELECT
+                                        istorija_merenja.ISTORIJA_MERENJA_ID,
+                                        istorija_merenja.DATUM_I_VREME_IM,
+                                        istorija_merenja.VREDNOST,
+                                        istorija_merenja.TIP_INSULINA,
+                                        istorija_merenja.TIP_UNOSA
                                         FROM  istorija_merenja
                                         where id=?');
 
@@ -243,41 +243,6 @@ function obirsi_unos($id)
     return json_encode($rarray);
 }
 
-function getHba1c()
-{
-    global $conn;
-    $rarray = array();
-    $user_id = getId();
-    $zbir_vrednosti_glikemija = 0;
-    $brojac = 0;
-
-    if (checkIfLoggedIn()) {
-
-        $stmt = $conn->prepare('SELECT istorija_merenja.VREDNOST FROM istorija_merenja
-        where istorija_merenja.id=? and istorija_merenja.TIP_UNOSA="Glikemija"');
-
-        $stmt->bind_param('i', $user_id);
-        $stmt->bind_result($v1);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch()) {
-
-            $zbir_vrednosti_glikemija += $row['VREDNOST'];
-            $brojac++;
-
-        }
-        $hbcb1 = $zbir_vrednosti_glikemija / $brojac;
-
-
-        return json_encode($hbcb1);
-
-    } else {
-        $rarray['error'] = "Please log in";
-        header('HTTP/1.1 401 Unauthorized');
-        return json_encode($rarray);
-    }
-}
-
 function obirsi_korisnika($id)
 {
     global $conn;
@@ -304,7 +269,7 @@ function getUsers()
 
     if (checkIfLoggedIn()) {
 
-        $stmt = $conn->prepare('SELECT  
+        $stmt = $conn->prepare('SELECT
                                         *
                                         FROM  korisnik');
 
@@ -345,7 +310,7 @@ function pronadji_korisnika($username)
 
     if (checkIfLoggedIn()) {
 
-        $stmt = $conn->prepare('SELECT  
+        $stmt = $conn->prepare('SELECT
                                         *
                                         FROM  korisnik
                                         WHERE username = ?');
